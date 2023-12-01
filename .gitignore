@@ -1,0 +1,19 @@
+/.DS_Store
+
+# Binaries for programs and plugins
+/__debug_bin
+/go_debug
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Enviroment variables
+/config/.env
+
+# DB Sqlite
+/db
+
+*.pdf

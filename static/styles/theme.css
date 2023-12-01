@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #027be3;
+  --backgroud: #fafafa;
+  --font-family: 'Roboto', sans-serif;
+  --gap: 1rem;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--backgroud);
+  height: 100vh;
+}
+
+nav {
+  background-color: var(--primary-color);
+}
+
+main {
+  display: flex;
+  width: 100%;
+  flex-flow: column;
+  align-items: center;
+  height: calc(100vh - 64px);
+}
+
+nav .brand-logo {
+  padding-left: var(--gap);
+}
+
+.form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: var(--gap);
+  row-gap: var(--gap);
+}
+
+.page {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: var(--gap);
+  row-gap: var(--gap);
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .form {
+    max-width: 700px;
+  }
+}

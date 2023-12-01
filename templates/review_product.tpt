@@ -1,0 +1,1 @@
+Hello {{index . "user_name"}} 👋! We noticed you've recently received your {{index . "product_name"}}. We'd love to hear about your experience!

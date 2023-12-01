@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Go:Debug",
+      "type": "go",
+      "request": "launch",
+      "program": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/config/.env",
+      "args": [
+        "--port=9000"
+      ]
+    },
+    {
+      "name": "Go:Attach",
+      "type": "go",
+      "request": "atacch",
+      "program": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/config/.env"
+    }
+  ]
+}

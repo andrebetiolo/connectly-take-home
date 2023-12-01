@@ -1,0 +1,61 @@
+{{define "view"}}
+<form class="form" x-data="app()" x-init="onMount" @submit.prevent="sendCallback">
+  <h1 class="title">Simulate Callback</h1>
+
+  <div class="form-floating">
+    <div class="input-field">
+      <select id="flow" x-model="formData.flow">
+        <option value="review_product">Review Product</option>
+        <option value="return_order">Return Order</option>
+        <option value="product_recommendations">Product Recommendations</option>
+      </select>
+      <label for="flow">Flow</label>
+    </div>
+
+    <div class="input-field">
+      <input id="user_id" type="text" class="validate" x-model="formData.parameters.user_id">
+      <label for="user_id">User ID</label>
+    </div>
+
+    <div class="input-field">
+      <input id="product_id" type="text" class="validate" x-model="formData.parameters.product_id">
+      <label for="product_id">Product ID</label>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Send callback</button>
+</form>
+
+<script>
+  function app() {
+    return {
+      formData: {
+        flow: '',
+        parameters: {
+          user_id: 1,
+          product_id: 1
+        },
+      },
+      async onMount() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+      },
+      sendCallback() {
+        let formData = this.formData;
+
+        if (formData.parameters.user_id) {
+          formData.parameters.user_id = parseInt(formData.parameters.user_id);
+        }
+
+        if (formData.parameters.product_id) {
+          formData.parameters.product_id = parseInt(formData.parameters.user_id);
+        }
+
+        formData.flow = document.querySelector('select').value;
+
+        http.post(`${API_URL}/callback/start-chatbot-flow`, formData);
+      }
+    }
+  };
+</script>
+{{end}}

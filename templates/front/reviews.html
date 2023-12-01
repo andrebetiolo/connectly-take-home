@@ -1,0 +1,48 @@
+{{define "view"}}
+<section class="page" x-data="app()" x-init="onMount">
+  <h1 class="title">Reviews</h1>
+
+  <p x-show="loading">Loading...</p>
+
+  <table class="striped highlight">
+    <thead>
+      <tr>
+        <th>Review ID</th>
+        <th>User Name</th>
+        <th>Product Name</th>
+        <th>Rate</th>
+        <th>Datetime</th>
+      </tr>
+    </thead>
+    <tbody>
+      <template x-for="(item, index) in reviews" :key="index">
+        <tr>
+          <td x-text="item.id"></id>
+          <td x-text="item.user.first_name+' '+item.user.last_name"></td>
+          <td x-text="item.product.name"></td>
+          <td x-text="item.product.name"></td>
+          <td x-text="formatData(item.datetime)"></td>
+        </tr>
+      </template>
+    </tbody>
+  </table>
+
+</section>
+
+<script>
+  function app() {
+    return {
+      loading: true,
+      reviews: null,
+      async onMount() {
+        const res = await http.get(`${API_URL}/reviews`);
+        this.reviews = res.data;
+        this.loading = false
+      },
+      formatData(data) {
+        return new Date(data).toLocaleString();
+      },
+    }
+  };
+</script>
+{{end}}
